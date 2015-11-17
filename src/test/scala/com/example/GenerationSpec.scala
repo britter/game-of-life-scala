@@ -8,7 +8,7 @@ class GenerationSpec extends FlatSpec with Matchers {
   val fourCells = rowOfThree + Cell(1, 1)
 
   "evolve" should "return empty generation for empty generation" in {
-    Generation().evolve.aliveCells should ===(Generation().aliveCells)
+    Generation().evolve.aliveCells should === (Set.empty)
   }
 
   it should "return a generation containing a cell which had two neighbours" in {

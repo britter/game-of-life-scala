@@ -7,8 +7,14 @@ object Generation {
 class Generation(val aliveCells: Set[Cell]) {
 
   def evolve: Generation = {
-    Generation(survivingCells)
+    Generation(newBornCells ++ survivingCells)
   }
+
+  private def newBornCells = deadNeighbours.filter(canBeBorn)
+  
+  private def canBeBorn(cell: Cell) = livingNeighbours(cell).size == 3
+
+  private def deadNeighbours = aliveCells.flatMap(_.neighbours).diff(aliveCells)
 
   private def survivingCells = aliveCells.filter(survivors)
 

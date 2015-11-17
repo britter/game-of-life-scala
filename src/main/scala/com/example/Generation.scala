@@ -7,12 +7,12 @@ object Generation {
 class Generation(val aliveCells: Set[Cell]) {
 
   def evolve: Generation = {
-    Generation(survivors)
+    Generation(survivingCells)
   }
 
-  private def survivors = aliveCells.filter(willSurvive)
+  private def survivingCells = aliveCells.filter(survivors)
 
-  private def willSurvive(cell: Cell) = {
+  private def survivors(cell: Cell) = {
     val livingNeighbourCount: Int = livingNeighbours(cell).size
     livingNeighbourCount == 2 || livingNeighbourCount == 3
   }

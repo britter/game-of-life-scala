@@ -12,7 +12,10 @@ class Generation(val aliveCells: Set[Cell]) {
 
   private def survivors = aliveCells.filter(willSurvive)
 
-  private def willSurvive(cell: Cell) = livingNeighbours(cell).size == 2
+  private def willSurvive(cell: Cell) = {
+    val livingNeighbourCount: Int = livingNeighbours(cell).size
+    livingNeighbourCount == 2 || livingNeighbourCount == 3
+  }
 
   private def livingNeighbours(cell: Cell) = cell.neighbours.intersect(aliveCells)
 }

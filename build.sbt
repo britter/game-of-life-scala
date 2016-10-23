@@ -1,12 +1,9 @@
-name := "minimal-scala"
+lazy val `game-of-life-scala` =
+  project.in(file(".")).enablePlugins(AutomateHeaderPlugin, GitVersioning)
 
-version := "1.0"
+libraryDependencies ++= Vector(
+  Library.scalaTest % "test"
+)
 
-scalaVersion := "2.11.7"
-
-// Change this to another test framework if you prefer
-libraryDependencies += "org.scalatest" %% "scalatest" % "2.2.4" % "test"
-
-// Uncomment to use Akka
-//libraryDependencies += "com.typesafe.akka" %% "akka-actor" % "2.3.11"
-
+initialCommands := """|import de.britter.game.of.life.scala._
+                      |""".stripMargin
